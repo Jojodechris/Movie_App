@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Movie App</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <h2>Movie App!!🎥 🍿</h2>
+    <div class="container"></div>
+    <div class="userInput">
+        <input id = "title" type="text" placeholder= "enter your title"  size="25">
+        <label for="rate">rate it out of 10: </label>
+        <input id = "rate" type="number" placeholder= "enter your rate" min="0" max="10" value="0" size="25">
+        <button id = "submit">Submit</button>
+    </div>
+    <h1>summary of your movies and their rates</h1>
+    <div class="summary"></div>
+     <ul id="movieList">
+
+
+    </ul>
+    </div>
+
+
+
+
+    
+</body>
+<!-- <script src="app.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    // $('li').after("<br>");
+    $('h1').addClass("userInput");
+    $("#submit").on("click", function() {
+        let title = $("#title").val();
+        let rate = $("#rate").val();
+                // Validation for title length
+                if (title.length < 2) {
+            alert('Your title is too short');
+            return false;
+        }
+        let listItem = $("<li>").html("You saw the movie '<strong>" + title + "</strong>' with a satisfaction rate equivalent to <strong>" + rate + "</strong> out of 10");
+
+        let removeButton = $("<button>").text("Remove");
+        $(removeButton).addClass('remove');
+        listItem.append(removeButton);
+        $("#movieList").append(listItem);
+        $('li').css('text-align', "center");
+        
+
+        // $('li').after("<br>");
+
+        // Event handler for Remove button
+        $(removeButton).on("click", function() {
+            $(this).parent().fadeOut('slow');
+            
+    //         if (title.length < 2) {
+    //   alert('Your title is too short');
+    //   return false;
+    // }
+
+
+        });
+
+    });
+</script>
+</html>
